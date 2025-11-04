@@ -1,0 +1,41 @@
+/* src/components/MoodDisplay.css */
+.mood-display {
+  text-align: center;
+  color: #fff;
+  margin-top: 30px;
+  animation: fadeIn 1.5s ease;
+}
+
+.mood-title {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.mood-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00ffff, #9b5de5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00ffff;
+  }
+  to {
+    text-shadow: 0 0 20px #9b5de5;
+  }
+}
