@@ -15,6 +15,7 @@
 .recommend-header h1 {
   font-size: 2.1rem;
   background: linear-gradient(90deg, #a866ff, #5cc6ff);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 18px rgba(138, 92, 255, 0.22);
