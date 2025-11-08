@@ -1,63 +1,81 @@
-/* Forms.css — dark cinematic login/signup forms */
-
-.form-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: radial-gradient(circle at top, #0d0d0d, #000);
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+/* AUTH MODAL STYLING */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.8);
   backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
 }
 
-.auth-form h2 {
+.auth-modal {
+  background: rgba(25, 25, 40, 0.95);
+  border: 1px solid rgba(138, 92, 255, 0.4);
+  border-radius: 18px;
+  padding: 2rem;
+  width: 360px;
+  color: white;
+  position: relative;
   text-align: center;
-  margin-bottom: 1rem;
-  color: #00ffff;
-  letter-spacing: 1px;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 0 25px rgba(138, 92, 255, 0.3);
 }
 
-.auth-form input {
-  margin: 8px 0;
-  padding: 10px;
+.auth-modal input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 0.8rem;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
+  outline: none;
   background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  color: white;
 }
 
-.auth-form button {
-  margin-top: 10px;
-  padding: 10px;
+.auth-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #8555fd, #4799b9);
+  color: white;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg, #00ffff, #9b5de5);
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.auth-form button:hover {
-  opacity: 0.8;
-}
-
-.auth-form a {
-  color: #00ffff;
-  text-decoration: none;
-}
-
-.auth-form p {
-  text-align: center;
+  border-radius: 10px;
+  font-weight: 600;
   margin-top: 10px;
-  color: #aaa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+  box-shadow: 0 0 15px rgba(138, 92, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.switch-mode span {
+  color: #8a5cff;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

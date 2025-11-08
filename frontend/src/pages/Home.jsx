@@ -204,7 +204,13 @@ export default function Home() {
             </p>
             <button
               className="recommend-btn"
-              onClick={() => (window.location.href = "/recommendations")}
+              onClick={() => {
+  const moodClean =
+    detectedMood.replace(/[^a-zA-Z]/g, "") || "Neutral";
+  window.location.href = `/recommendations?mood=${moodClean}`;
+}}
+
+
             >
               🎥 Find Movies for Me
             </button>
@@ -269,9 +275,14 @@ export default function Home() {
                   </p>
                   <button
                     className="recommend-btn"
-                    onClick={() =>
-                      (window.location.href = "/recommendations")
-                    }
+                     onClick={() => {
+  const moodClean =
+    quizMood.replace(/[^a-zA-Z]/g, "") || "Neutral";
+  window.location.href = `/recommendations?mood=${moodClean}`;
+}}
+
+
+
                   >
                     🎥 See Movie Recommendations
                   </button>

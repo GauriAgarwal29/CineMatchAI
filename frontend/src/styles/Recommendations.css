@@ -1,0 +1,163 @@
+.recommendations-page {
+  background: radial-gradient(ellipse at center, #0b0b14, #000);
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  padding: 80px 40px;
+}
+
+/* Header Section */
+.recommend-header {
+  margin-bottom: 40px;
+}
+
+.recommend-header h1 {
+  font-size: 2.1rem;
+  background: linear-gradient(90deg, #a866ff, #5cc6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 18px rgba(138, 92, 255, 0.22);
+}
+
+.mood-display {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 6px;
+}
+
+.mood-display span {
+  color: #a866ff;
+  font-weight: 700;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  padding: 0 20px 80px 20px;
+}
+
+/* Movie Card */
+.movie-card {
+  background: linear-gradient(180deg, rgba(24,24,36,0.75), rgba(16,16,24,0.6));
+  border: 1px solid rgba(138, 92, 255, 0.22);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(138, 92, 255, 0.08);
+  padding: 12px;
+  transition: all 0.28s cubic-bezier(.2,.9,.2,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Poster area */
+.poster-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.poster-wrap img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+/* rating badge in top-left of poster */
+.rating-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: linear-gradient(90deg, rgba(255,215,90,0.95), rgba(255,180,60,0.95));
+  color: #111;
+  font-weight: 700;
+  padding: 6px 8px;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  font-size: 0.95rem;
+}
+
+/* Title */
+.movie-card h3 {
+  margin-top: 12px;
+  font-size: 1.02rem;
+  color: #efeaff;
+  min-height: 44px;
+}
+
+/* Platforms */
+.platforms {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.platform-badge {
+  font-size: 0.85rem;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  color: #e9e7ff;
+  border: 1px solid rgba(138,92,255,0.08);
+}
+
+/* Watchlist button */
+.watchlist-btn {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(168,104,255,0.15);
+  background: linear-gradient(90deg, rgba(72,153,185,0.12), rgba(133,85,253,0.06));
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  width: 90%;
+}
+
+.watchlist-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(138,92,255,0.12);
+}
+
+.watchlist-btn.added {
+  background: linear-gradient(90deg, #7af2c8, #6cc1ff);
+  color: #08202a;
+  border-color: rgba(120,240,200,0.2);
+  box-shadow: 0 8px 20px rgba(108,193,255,0.15);
+}
+
+/* Hover/Focus */
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 38px rgba(138, 92, 255, 0.18);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .poster-wrap img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 520px) {
+  .poster-wrap img {
+    height: 260px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .movie-card h3 { font-size: 0.95rem; }
+  .rating-badge { font-size: 0.85rem; padding: 5px 6px; }
+}

@@ -1,39 +1,56 @@
-import React, { useState } from 'react';
-import { useApp } from '../context/AppContext';
+// src/components/AuthModal.jsx
+import React, { useState } from "react";
+import "../styles/Forms.css";
 
+export default function AuthModal({ onClose, onLogin }) {
+  const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-export default function AuthModal({ onClose }) {
-const { setUser } = useApp();
-const [mode, setMode] = useState('login');
-const [form, setForm] = useState({ name: '', email: '', password: '' });
-const [error, setError] = useState('');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      localStorage.setItem("cine_user", JSON.stringify({ email }));
+      onLogin(email);
+      onClose();
+    }
+  };
 
+  return (
+    <div className="auth-overlay" onClick={onClose}>
+      <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
+        <button className="close-btn" onClick={onClose}>
+          ×
+        </button>
+        <h2>{isLogin ? "Login" : "Sign Up"}</h2>
 
-const handleSubmit = (e) => {
-e.preventDefault();
-if (mode === 'signup' && form.email === 'exists@example.com') return setError('User already exists');
-if (mode === 'login' && !(form.email && form.password)) return setError('Invalid credentials');
-setUser({ name: form.name || 'User', email: form.email });
-onClose();
-};
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="auth-btn">
+            {isLogin ? "Login" : "Sign Up"}
+          </button>
+        </form>
 
-
-return (
-<div className="modalOverlay">
-<div className="modalBox">
-<h3>{mode === 'signup' ? 'Sign Up' : 'Login'}</h3>
-{error && <p className="errorMsg">{error}</p>}
-<form onSubmit={handleSubmit}>
-{mode === 'signup' && <input placeholder="Name" value={form.name} onChange={e => setForm({...form, name:e.target.value})} />}
-<input placeholder="Email" value={form.email} onChange={e => setForm({...form, email:e.target.value})} />
-<input type="password" placeholder="Password" value={form.password} onChange={e => setForm({...form, password:e.target.value})} />
-<button type="submit">{mode === 'signup' ? 'Sign Up' : 'Login'}</button>
-</form>
-<button className="linkBtn" onClick={() => setMode(mode === 'signup' ? 'login' : 'signup')}>
-{mode === 'signup' ? 'Already have account? Login' : 'New user? Sign up'}
-</button>
-<button className="closeBtn" onClick={onClose}>✕</button>
-</div>
-</div>
-);
+        <p className="switch-mode">
+          {isLogin ? "New user?" : "Already have an account?"}{" "}
+          <span onClick={() => setIsLogin(!isLogin)}>
+            {isLogin ? "Sign up here" : "Login"}
+          </span>
+        </p>
+      </div>
+    </div>
+  );
 }
